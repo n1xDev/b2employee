@@ -1,0 +1,133 @@
+<! DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+	<title>Tables</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<script src="css/jquery-1.12.3.min.js"  type="text/javascript"></script>
+
+	<script src="js/dropdown.js"  type="text/javascript"></script>
+	<script type="text/javascript">
+	console.log(jQuery);
+	$(function() { $('.dropdown-toggle').dropdown(); })()</script>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<style>
+.delivery_block{
+width: 100%;
+padding: 24px 0 0;
+color: #505050;
+font-weight: bold;
+font-size: 11px;
+}
+.delivery_block .delivery_list {
+padding: 3px 6px 0 6px;
+height: 36px;
+cursor: pointer;
+border-radius: 4px;
+margin: 0 20px 0 0;
+color: #505050;
+border: 1px solid #efefef;
+
+width: 100%;
+z-index: 11;
+background: #fcfcfc;
+}
+.delivery_list #btn {
+background: url(dropdown.png);
+background-size:100%;
+background-repeat: no-repeat;
+width:24px;
+height:26px;
+margin-top:2px;
+float: right;
+}
+.delivery_list span {
+padding: 1px 0 0 2px;
+display: block;
+font-weight: bold;
+}
+.delivery_block ul.cities_list {
+margin-top: 0px;
+z-index: 10;
+background: #fcfcfc;
+position: absolute;
+border-radius: 3px;
+width: 37.6%;
+padding: 0;
+border: 1px solid #eee;
+display: none;
+}
+ul.cities_list li {
+padding: 6px 9px;
+list-style-type: none;
+border-top: 1px solid #efefef;
+}
+ul.cities_list li:hover {
+cursor: pointer;
+background: #fff;
+}
+.delivery_block .delivery_text {
+padding: 3px 5px;
+margin: 5px 0 0 3px;
+}
+</style>
+
+<script>
+$(function(){
+/* выбор города */
+$('.delivery_list').click(function(){
+$(".cities_list").slideToggle('fast');
+});
+$('ul.cities_list li').click(function(){
+var tx = $(this).html();
+var tv = $(this).attr('alt');
+$(".cities_list").slideUp('fast');
+$(".delivery_list span").html(tx);
+$(".delivery_text").html(tv);
+});
+})
+</script>
+
+</head>
+<body>
+
+	<div class="cantant">
+		<div class="headar">
+			<h2>Выбрать отдел</h2>
+		</div>
+		<div class="vibook">
+			<div class="centra">
+					<div class="delivery_block">
+<div class="delivery_list"><div id="btn"> </div><span style="font-size:16px;margin-top:3px;">Технический</span></div>
+
+<ul class="cities_list">
+<li>Маркетинговый</li>
+<li>Технический</li>
+<li>Филологический</li>
+<li>Анонимный</li>
+<li>Наемный</li>
+
+</ul>
+</div>
+
+
+			</div>
+					<table style="width:90%;margin-left:60px;margin-top:30px;border-radius:5px;background-color: #cecece;" class="table table-striped">
+					<th>№</th><th>Фамилия, Имя</th><th>Рейтинг</th><th>Ссылка</th>
+					{% for item in data %} 
+					<tr><td>{{ item.sort_num }}</td><td>{{ item.user }}</td><td>{{ item.cor }} %</td><td><a href="https://vk.com/id{{ item.user[1:] }}">Вконтакте</a></td></tr>
+					{% endfor %}
+					</table>
+
+		</div>
+		
+
+	</div>
+	
+	
+</body>
+</html>
